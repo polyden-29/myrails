@@ -1,0 +1,19 @@
+<div class="row">
+	<h1>Show</h1>
+	<div class="col-md-2">
+		<section class="article_info center">
+			
+		</section>
+	</div>
+	<div class="col-lg-8 well">
+		<h1><%= @article.title %></h1>	
+		<p><%= @article.text %></p>
+		<p><%= time_ago_in_words(@article.created_at) %></p>
+		<% if @article.user_id == current_user.id %>
+			<%= link_to "Edit", edit_article_path %>
+			<label>&nbsp;|&nbsp;</label>
+			<%= link_to "Delete", article_path(@article.id), method: "delete", data: { confirm: "do u want to del" } %>
+		<% end %>
+	</div>
+</div>
+<%= link_to "Back to index", articles_path %>

@@ -1,0 +1,33 @@
+<h1>this is articles index page</h1>
+<div class="row">
+	<div class="col-md-2 well">
+		<h4><label><%= current_user.name %></label></h4>
+	</div>
+</div>
+
+<% @articles.each do |article| %>
+		<div class="row">
+			<div class="col-md-2">
+				<section class="article_info center">
+					
+				</section>
+			</div>
+			<div class="col-lg-8 well">
+				<h4 style="color: red"><%= link_to article.title, article_path(article) %></h4>
+				<p><%= article.text.first(100) %></p>
+				<p><%= time_ago_in_words(article.created_at) %></p>
+				<p>Uploaded by&nbsp;<%= link_to article.user_name %></p>
+				<% if @user.name == article.user_name %>
+					<%= image_tag @user.avatar.url(:thumb) %>
+				<% end %>
+			</div>
+		</div>
+<% end %>
+<%= link_to "Create new article",new_article_path%>
+<label>&nbsp;|&nbsp;</label>
+<label><%= current_user.name %></label>
+<label>&nbsp;|&nbsp;</label>
+<%= link_to "Log Out", login_path(current_user) ,method: 'delete' %>
+<label>&nbsp;|&nbsp;</label>
+<%= link_to "Setting", user_path(@user) %>
+
