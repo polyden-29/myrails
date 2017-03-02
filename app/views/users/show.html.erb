@@ -7,7 +7,8 @@
 		</section>
 	</div>
 	<div class="col-lg-8 well">
-		<h4>Name:&nbsp;<%= @user.name %></h4>	
+		<h4>Name:&nbsp;<%= @user.name %></h4>
+		<%= image_tag @user.avatar.url(:thumb) %>	
 		<p>Email:&nbsp;<%= @user.email %></p>
 		
 	</div>
